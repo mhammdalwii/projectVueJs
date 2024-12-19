@@ -22,11 +22,11 @@
           <div v-for="(name, index) in names" :key="name" @click="removeName(index)">{{ name }}</div>
         </div>
         <div v-if="isReady">
-          <div class="action_button">check the winner</div>
+          <div class="action_button" @click="showResult">check the winner</div>
         </div>
       </div>
 
-      <!-- <div id="result" class="container"></div> -->
+      <div id="result" class="container" v-if="!state">Result</div>
     </div>
     <script src="script/app.js"></script>
   </body>

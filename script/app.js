@@ -39,5 +39,8 @@ const app = Vue.createApp({
     removeName(index) {
       this.names.splice(index, 1);
     },
+    showResult() {
+      this.state = false;
+    },
   },
 }).mount("#app");
