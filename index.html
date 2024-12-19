@@ -10,7 +10,6 @@
   <body>
     <div id="app">
       <div id="names" class="container" v-if="state">
-        fd
         <div class="logo">
           <h1>Who can get Arisan</h1>
         </div>
@@ -18,7 +17,15 @@
           <input type="text" v-model.trin="inputName" />
           <button @click="addNameToList">Add</button>
         </div>
+        <div class="error_label" v-if="showError">{{ error }}</div>
+        <div class="list_of_names">
+          <div v-for="(name, index) in names" :key="name" @click="removeName(index)">{{ name }}</div>
+        </div>
+        <div v-if="isReady">
+          <div class="action_button">check the winner</div>
+        </div>
       </div>
+
       <!-- <div id="result" class="container"></div> -->
     </div>
     <script src="script/app.js"></script>
