@@ -27,7 +27,15 @@
         </div>
       </div>
 
-      <div id="result" class="container animate__animated" v-if="!state">Result</div>
+      <div id="result" class="container animate__animated animated__fadeIn" v-if="!state">
+        <div class="result_container">
+          <h1>the Winner is</h1>
+          <div class="result_value">{{ result }}</div>
+          <div class="action_button" @click="resetApp">Mulai Baru!</div>
+          <br />
+          <div class="action_button btn2" @click="getNewResult">ganti pemenang</div>
+        </div>
+      </div>
     </div>
     <script src="script/app.js"></script>
   </body>

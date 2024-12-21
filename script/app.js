@@ -1,11 +1,15 @@
+const DEFAULT_STATE = {
+  state: true,
+  inputName: "",
+  names: [],
+  error: "",
+  showError: false,
+  result: "",
+};
 const app = Vue.createApp({
   data() {
     return {
-      state: true,
-      inputName: "",
-      names: [],
-      error: "",
-      showError: false,
+      ...DEFAULT_STATE,
     };
   },
   computed: {
@@ -40,7 +44,33 @@ const app = Vue.createApp({
       this.names.splice(index, 1);
     },
     showResult() {
+      this.generateResult();
       this.state = false;
+    },
+    getRandomName() {
+      return this.names[Math.floor(Math.random() * this.names.length)];
+    },
+    generateResult() {
+      let randName = this.getRandomName();
+      if (this.result !== "") {
+        while (randName === this.result) {
+          randName = this.getRandomName();
+        }
+      }
+      this.result = randName;
+    },
+
+    resetApp() {
+      this.state = true;
+      this.inputName = "";
+      this.names = [];
+      this.error = "";
+      this.showError = false;
+      this.result = "";
+    },
+
+    getNewResult() {
+      this.generateResult();
     },
   },
 }).mount("#app");
